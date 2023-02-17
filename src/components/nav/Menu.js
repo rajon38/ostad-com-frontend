@@ -4,8 +4,9 @@ import { useAuth } from '../../context/auth'
 
 const Menu = () => {
 
-    //hooks
+    //context
     const [auth, setAuth] = useAuth();
+    //hooks
     const navigate = useNavigate();
 
     const logout = () => {
@@ -37,11 +38,29 @@ const Menu = () => {
             </li>
           </>
         ) : (
-          <li className="nav-item pointer">
-            <a onClick={logout} className="nav-link">
-              LOGOUT
-            </a>
-          </li>
+          <diV className="dropdown">
+            <li>
+              <a className="nav-link pointer dropdown-toggle" data-bs-toggle="dropdown">
+                {auth?.user?.name?.toUpperCase()}
+              </a>
+
+              <ul className="dropdown-menu">
+                <li>
+                  <NavLink className="nav-link" to={`/dashboard/${auth?.user?.role === 1 ? "admin" : "user"}`}>
+                    Dashboard
+                  </NavLink>
+                </li>
+
+                <li className="nav-item pointer">
+                  <a onClick={logout} className="nav-link">
+                  LOGOUT
+                  </a>
+                </li>
+
+              </ul>
+            </li>
+          </diV>
+          
         )}
       </ul>
         </div>

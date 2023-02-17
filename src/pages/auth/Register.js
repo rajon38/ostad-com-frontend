@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { toast } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import Jumbotron from '../../components/cards/Jumbotron';
 import { useAuth } from '../../context/auth';
 
@@ -12,12 +13,13 @@ const Register = () => {
 
     //hooks
     const [auth, setAuth] = useAuth();
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             const { data } = await axios.post(
-                `${process.env.REACT_APP_API}/register`,
+                `/register`,
                 {
                     name,
                     email,
@@ -30,7 +32,8 @@ const Register = () => {
             } else {
                 localStorage.setItem("auth", JSON.stringify(data));
                 setAuth({ ...auth, token: data.token, user: data.user });
-                toast.success("Registetion Successfull")
+                toast.success("Registetion Successfull");
+                navigate("/dashboard");
             }
         } catch (err) {
             console.log(err);
