@@ -1,44 +1,45 @@
-import axios from 'axios';
-import React, { useState } from 'react';
-import Jumbotron from "../../components/cards/Jumbotron"
-import { toast } from 'react-hot-toast';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { useAuth } from '../../context/auth';
+import { useState } from "react";
+import Jumbotron from "../../components/cards/Jumbotron";
+import axios from "axios";
+import toast from "react-hot-toast";
+import { useAuth } from "../../context/auth";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Login = () => {
-
-  //state
+  // state
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  //hook
+  // hook
   const [auth, setAuth] = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const { data } = await axios.post(`/login`, {
         email,
-        password
+        password,
       });
       console.log(data);
       if (data?.error) {
-        toast.error(data.error)
+        toast.error(data.error);
       } else {
         localStorage.setItem("auth", JSON.stringify(data));
         setAuth({ ...auth, token: data.token, user: data.user });
-        toast.success("Login Successfull");
+        toast.success("Login successful");
         navigate(
           location.state ||
           `/dashboard/${data?.user?.role === 1 ? "admin" : "user"}`
-        )
+        );
       }
     } catch (err) {
       console.log(err);
-      toast.error("Login Failed. Try again");
+      toast.error("Login failed. Try again.");
     }
   };
+
   return (
     <div>
       <Jumbotron title="Login" />
@@ -72,6 +73,6 @@ const Login = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Login;
