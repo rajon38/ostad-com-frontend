@@ -1,12 +1,9 @@
 import { Badge } from "antd";
-import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-// import { useCart } from "../../context/cart";
+
 
 const  ProductCard=({ p })=> {
-  // context
-  // const [cart, setCart] = useCart();
-  // hooks
+
   const navigate = useNavigate();
 
   return (

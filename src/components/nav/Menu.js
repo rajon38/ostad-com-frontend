@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import { useAuth } from "../../context/auth";
 import { useNavigate } from "react-router-dom";
 import useCategory from "../../hooks/useCategory";
+import Search from "../forms/Search";
 
 //import { Badge } from "antd";
 
@@ -28,7 +29,13 @@ const Menu = () => {
           <NavLink className="nav-link" aria-current="page" to="/">
             HOME
           </NavLink>
-        </li>       
+        </li>
+
+        <li className="nav-item">
+          <NavLink className="nav-link" aria-current="page" to="/shop">
+            SHOP
+          </NavLink>
+        </li>
 
         <div className="dropdown">
           <li>
@@ -59,6 +66,9 @@ const Menu = () => {
             </ul>
           </li>
         </div>
+
+
+        <Search/>
 
       
    
