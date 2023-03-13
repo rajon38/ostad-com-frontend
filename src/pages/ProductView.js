@@ -15,9 +15,11 @@ import {Badge} from "antd";
 import moment from "moment";
 import toast from "react-hot-toast";
 import ProductCard from "../components/cards/ProductCard";
+import {useCart} from "../context/cart";
 
-const ProductView = () => {
-
+const ProductView = ({p}) => {
+    //context
+    const [cart,setCart] = useCart();
     //state
     const [product,setProduct] = useState({});
     const [related,setRelated] = useState([]);
@@ -114,6 +116,8 @@ const ProductView = () => {
                             borderBottomLeftRadius: "5px"
                         }}
                         onClick={()=>{
+                            setCart([...cart, p]);
+                            localStorage.setItem("cart", JSON.stringify([...cart,p]));
                             toast.success("Added to card");
                         }}
                         >
