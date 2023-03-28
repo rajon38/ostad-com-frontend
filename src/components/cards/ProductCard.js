@@ -1,13 +1,12 @@
 import { Badge } from "antd";
-import { useNavigate } from "react-router-dom";
-import {useCart} from "../../context/cart";
 import toast from "react-hot-toast";
-
+import { useNavigate } from "react-router-dom";
+import { useCart } from "../../context/cart";
 
 const  ProductCard=({ p })=> {
-    //context
-    const [cart,setCart] = useCart();
-    //hooks
+  // context
+  const [cart, setCart] = useCart();
+  // hooks
   const navigate = useNavigate();
 
   return (
@@ -38,7 +37,7 @@ const  ProductCard=({ p })=> {
             style: "currency",
             currency: "USD",
           })}
-        </h4>      
+        </h4>
 
         <p className="card-text">{p?.description?.substring(0, 60)}...</p>
       </div>
@@ -55,18 +54,18 @@ const  ProductCard=({ p })=> {
         <button
           className="btn btn-outline-primary col card-button"
           style={{ borderBottomRightRadius: "5px" }}
-          onClick={()=>{
-              setCart([...cart, p]);
-              localStorage.setItem("cart", JSON.stringify([...cart,p]));
-              toast.success("Added to card");
+          onClick={() => {
+            setCart([...cart, p]);
+            localStorage.setItem("cart", JSON.stringify([...cart, p]));
+            toast.success("Added to cart");
           }}
         >
           Add to Cart
         </button>
       </div>
 
-      
-      
+      {/* <p>{moment(p.createdAt).fromNow()}</p>
+      <p>{p.sold} sold</p> */}
     </div>
   );
 }

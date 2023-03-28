@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState,useEffect } from "react";
 import { useAuth } from "../../context/auth";
 import Jumbotron from "../../components/cards/Jumbotron";
 import AdminMenu from "../../components/nav/AdminMenu";
@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 import CategoryForm from "../../components/forms/CategoryForm";
 import { Modal } from "antd";
 
-const AdminCategory = () => {
+const AdminCategory=()=> {
   // context
   const [auth, setAuth] = useAuth();
   // state
@@ -125,7 +125,7 @@ const AdminCategory = () => {
             </div>
 
             <Modal
-              open={visible}
+              visible={visible}
               onOk={() => setVisible(false)}
               onCancel={() => setVisible(false)}
               footer={null}

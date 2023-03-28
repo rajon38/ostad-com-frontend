@@ -26,4 +26,4 @@ const AdminRoute=()=> {
   return ok ? <Outlet /> : <Loading path="" />;
 }
 
-export default AdminRoute;
+export default AdminRoute

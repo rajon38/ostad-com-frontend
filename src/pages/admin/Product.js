@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 const { Option } = Select;
 
 
-const AdminProduct = () => {
+const AdminProduct=()=> {
   // context
   const [auth, setAuth] = useAuth();
 
@@ -67,7 +67,6 @@ const AdminProduct = () => {
 
 
 
-
   return (
     <>
       <Jumbotron
@@ -84,86 +83,86 @@ const AdminProduct = () => {
             <div className="p-3 mt-2 mb-2 h4 bg-light">Create Products</div>
 
             {photo && (
-                <div className="text-center">
-                  <img
-                      src={URL.createObjectURL(photo)}
-                      alt="product photo"
-                      className="img img-responsive"
-                      height="200px"
-                  />
-                </div>
+              <div className="text-center">
+                <img
+                  src={URL.createObjectURL(photo)}
+                  alt="product photo"
+                  className="img img-responsive"
+                  height="200px"
+                />
+              </div>
             )}
 
             <div className="pt-2">
               <label className="btn btn-outline-secondary col-12 mb-3">
                 {photo ? photo.name : "Upload photo"}
                 <input
-                    type="file"
-                    name="photo"
-                    accept="image/*"
-                    onChange={(e) => setPhoto(e.target.files[0])}
-                    hidden
+                  type="file"
+                  name="photo"
+                  accept="image/*"
+                  onChange={(e) => setPhoto(e.target.files[0])}
+                  hidden
                 />
               </label>
             </div>
 
             <input
-                type="text"
-                className="form-control p-2 mb-3"
-                placeholder="Write a name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+              type="text"
+              className="form-control p-2 mb-3"
+              placeholder="Write a name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
             />
 
             <textarea
-                type="text"
-                className="form-control p-2 mb-3"
-                placeholder="Write a description"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
+              type="text"
+              className="form-control p-2 mb-3"
+              placeholder="Write a description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
             />
 
             <input
-                type="number"
-                className="form-control p-2 mb-3"
-                placeholder="Enter price"
-                value={price}
-                onChange={(e) => setPrice(e.target.value)}
+              type="number"
+              className="form-control p-2 mb-3"
+              placeholder="Enter price"
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
             />
 
             <Select
-                // showSearch
-                bordered={false}
-                size="large"
-                className="form-select mb-3"
-                placeholder="Choose category"
-                onChange={(value) => setCategory(value)}
+              // showSearch
+              bordered={false}
+              size="large"
+              className="form-select mb-3"
+              placeholder="Choose category"
+              onChange={(value) => setCategory(value)}
             >
               {categories?.map((c) => (
-                  <Option key={c._id} value={c._id}>
-                    {c.name}
-                  </Option>
+                <Option key={c._id} value={c._id}>
+                  {c.name}
+                </Option>
               ))}
             </Select>
 
             <Select
-                bordered={false}
-                size="large"
-                className="form-select mb-3"
-                placeholder="Choose shipping"
-                onChange={(value) => setShipping(value)}
+              bordered={false}
+              size="large"
+              className="form-select mb-3"
+              placeholder="Choose shipping"
+              onChange={(value) => setShipping(value)}
             >
               <Option value="0">No</Option>
               <Option value="1">Yes</Option>
             </Select>
 
             <input
-                type="number"
-                min="1"
-                className="form-control p-2 mb-3"
-                placeholder="Enter quantity"
-                value={quantity}
-                onChange={(e) => setQuantity(e.target.value)}
+              type="number"
+              min="1"
+              className="form-control p-2 mb-3"
+              placeholder="Enter quantity"
+              value={quantity}
+              onChange={(e) => setQuantity(e.target.value)}
             />
 
             <button onClick={handleSubmit} className="btn btn-primary mb-5">

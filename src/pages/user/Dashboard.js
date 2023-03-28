@@ -23,9 +23,10 @@ const UserDashboard=()=> {
               <li className="list-group-item">{auth?.user?.email}</li>
             </ul>
           </div>
-        </div>
+        </div>        
       </div>
     </>
   );
 }
+
 export default UserDashboard;

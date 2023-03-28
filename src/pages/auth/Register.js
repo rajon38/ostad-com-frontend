@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import { useAuth } from "../../context/auth";
 import { useNavigate } from "react-router-dom";
 
-const Register = () => {
+const Register=()=> {
   // state
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -18,7 +18,7 @@ const Register = () => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "/register",
+        `/register`,
         {
           name,
           email,
@@ -26,14 +26,14 @@ const Register = () => {
         }
       );
       console.log(data);
-
+     
       if (data?.error) {
         toast.error(data.error);
       } else {
         localStorage.setItem("auth", JSON.stringify(data));
         setAuth({ ...auth, token: data.token, user: data.user });
         toast.success("Registration successful");
-        navigate("/dashboard");
+        navigate("/dashboard/user");
       }
     } catch (err) {
       console.log(err);

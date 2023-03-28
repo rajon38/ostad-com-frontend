@@ -3,7 +3,7 @@ import Jumbotron from "../components/cards/Jumbotron";
 import axios from "axios";
 import ProductCard from "../components/cards/ProductCard";
 
-const Home = () => {
+const Home=()=> {
   const [products, setProducts] = useState([]);
   const [total, setTotal] = useState(0);
   const [page, setPage] = useState(1);
@@ -51,7 +51,6 @@ const Home = () => {
 
   const arr = [...products];
   const sortedBySold = arr?.sort((a, b) => (a.sold < b.sold ? 1 : -1));
-
 
   return (
     <div>

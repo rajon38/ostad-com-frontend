@@ -12,12 +12,15 @@ import AdminProducts from "./pages/admin/Products";
 import AdminProductUpdate from "./pages/admin/ProductUpdate";
 import UserOrders from "./pages/user/Orders";
 import UserProfile from "./pages/user/Profile";
-import PrivateRoute from "./components/routes/PrivateRoute";
-import AdminRoute from "./components/routes/AdminRoute";
 import Shop from "./pages/Shop";
 import Search from "./pages/Search";
 import ProductView from "./pages/ProductView";
-import Cart from "./pages/Cart"
+import PrivateRoute from "./components/routes/PrivateRoute";
+import AdminRoute from "./components/routes/AdminRoute";
+import CategoriesList from "./pages/CategoriesList";
+import CategoryView from "./pages/CategoryView";
+import Cart from "./pages/Cart";
+import AdminOrders from "./pages/admin/Orders";
 
 const PageNotFound = () => {
   return (
@@ -31,13 +34,15 @@ const App=()=> {
   return (
     <BrowserRouter>
       <Menu />
-      <Toaster />
+      <Toaster position="top-right" />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/shop" element={<Shop />} />
-        <Route path="/search" element={<Search />}/>
-        <Route path="/cart" element={<Cart />}/>
-        <Route path="/product/:slug" element={<ProductView/>}/>
+        <Route path="/categories" element={<CategoriesList />} />
+        <Route path="/category/:slug" element={<CategoryView />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="/product/:slug" element={<ProductView />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/dashboard" element={<PrivateRoute />}>
@@ -55,10 +60,12 @@ const App=()=> {
             path="admin/product/update/:slug"
             element={<AdminProductUpdate />}
           />
+          <Route path="admin/orders" element={<AdminOrders />} />
         </Route>
         <Route path="*" element={<PageNotFound />} replace />
       </Routes>
     </BrowserRouter>
   );
 }
+
 export default App;
